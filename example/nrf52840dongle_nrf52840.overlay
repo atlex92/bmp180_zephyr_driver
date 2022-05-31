@@ -1,0 +1,24 @@
+// To get started, press Ctrl+Space to bring up the completion menu and view the available nodes.
+// For more help, browse the DeviceTree documentation at https://docs.zephyrproject.org/latest/guides/dts/index.html
+/ {
+	chosen {
+		zephyr,console = &cdc_acm_uart0;
+	};
+};
+
+&zephyr_udc0 {
+	cdc_acm_uart0: cdc_acm_uart0 {
+		compatible = "zephyr,cdc-acm-uart";
+		label = "CDC_ACM_0";
+	};
+};
+&i2c0 {
+	sda-pin = < 13 >;
+	scl-pin = < 15 >;
+	status = "okay";
+    bmp180@77 {
+		compatible = "bosch,bmp180";
+		reg = <0x77>;
+		label = "BMP180_I2C";
+	};
+};

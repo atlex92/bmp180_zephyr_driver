@@ -1,0 +1,14 @@
+sample:
+  name: BMP180 Sensor sample
+tests:
+  sample.sensor.bmp180:
+    harness: console
+    tags: sensors
+    platform_allow: nrf52840dongle_nrf52840
+    integration_platforms:
+      - nrf52840dongle_nrf52840
+    harness_config:
+        type: one_line
+        regex:
+            - "temp: (.*); press: (.*);"
+        fixture: fixture_i2c_bmp180
