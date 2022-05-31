@@ -181,8 +181,8 @@ static const struct sensor_driver_api bmp180_api_funcs = {
 };
 
 static void bmp180_compensate_temp(struct bmp180_data *data, int32_t adc_temp) {
-	data->x1 = (adc_temp - data->comp_data.AC6) * data->comp_data.AC5 >> 15;
-	data->x2 = (data->comp_data.MC >> 11) / (data->x1 + data->comp_data.MD);
+	data->x1 = ((adc_temp - data->comp_data.AC6) * data->comp_data.AC5) >> 15;
+	data->x2 = (data->comp_data.MC << 11) / (data->x1 + data->comp_data.MD);
 	data->b5 = data->x1 + data->x2;
 	data->comp_temp = (data->b5 + 8) >> 4;
 }
