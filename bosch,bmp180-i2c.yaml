@@ -1,0 +1,5 @@
+description: BMP180 integrated environmental sensor
+
+compatible: "bosch,bmp180"
+
+include: i2c-device.yaml
